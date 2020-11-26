@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_marginTop="@dimen/x4ConstantSize15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:textColor="@color/color_button"
+        android:textStyle="bold"
+        android:textSize="@dimen/x2constant15" />
+
+    <EditText
+        android:layout_marginTop="@dimen/constanSize15"
+        android:layout_width="@dimen/constantSize350"
+        android:layout_height="@dimen/x4ConstantSize15"
+        android:hint="Username"
+        android:textColorHint="@color/grey"
+        android:id="@+id/txtUser"/>
+
+    <EditText
+        android:layout_marginTop="@dimen/constanSize15"
+        android:layout_width="@dimen/constantSize350"
+        android:layout_height="@dimen/x4ConstantSize15"
+        android:hint="Full name"
+        android:textColorHint="@color/grey"
+        android:id="@+id/txtFullName"/>
+
+    <EditText
+        android:layout_marginTop="@dimen/constanSize15"
+        android:layout_width="@dimen/constantSize350"
+        android:layout_height="@dimen/x4ConstantSize15"
+        android:hint="Email"
+        android:textColorHint="@color/grey"
+        android:id="@+id/txtEmail"/>
+
+    <EditText
+        android:layout_marginTop="@dimen/constanSize15"
+        android:layout_width="@dimen/constantSize350"
+        android:layout_height="@dimen/x4ConstantSize15"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:textColorHint="@color/grey"
+        android:id="@+id/txtPassword"/>
+
+    <TextView
+        android:text="   "
+        android:id="@+id/tv_alert"
+        android:layout_width="@dimen/constantSize350"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gmail" />
+
+    <Button
+        android:layout_marginTop="@dimen/x4ConstantSize15"
+        style="@style/button"
+        android:text="Sign Up"
+        android:id="@+id/btnSignUp_2" />
+
+
+
+</LinearLayout>

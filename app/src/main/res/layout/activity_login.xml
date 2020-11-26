@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_marginTop="@dimen/x4ConstantSize15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in"
+        android:textColor="@color/color_button"
+        android:textStyle="bold"
+        android:textSize="@dimen/x2constant15" />
+
+    <EditText
+        android:layout_marginTop="@dimen/constanSize15"
+        android:layout_width="@dimen/constantSize350"
+        android:layout_height="@dimen/x4ConstantSize15"
+        android:hint="Username"
+        android:textColorHint="@color/grey"
+        android:id="@+id/txtUser"/>
+
+    <EditText
+        android:layout_marginTop="@dimen/constanSize15"
+        android:layout_width="@dimen/constantSize350"
+        android:layout_height="@dimen/x4ConstantSize15"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:textColorHint="@color/grey"
+        android:id="@+id/txtPassword"/>
+
+    <Button
+        android:layout_marginTop="@dimen/x4ConstantSize15"
+        android:id="@+id/btnLogIn"
+        style="@style/button"
+        android:text="@string/button_name" />
+    <TextView
+        android:id="@+id/tvSignUp"
+        android:layout_marginTop="@dimen/constanSize15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/signUp"
+        android:textColor="@color/color_button"
+        android:textStyle="bold"
+        android:textSize="@dimen/constanSize15"/>
+
+
+</LinearLayout>

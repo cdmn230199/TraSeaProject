@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.SearchFrag">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/chat_screen_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="2dp"
+        android:background="@color/blueSky"
+        android:elevation="2dp">
+
+       <de.hdodenhof.circleimageview.CircleImageView
+           android:id="@+id/avt_chat_screen"
+           android:layout_width="44dp"
+           android:src="@drawable/ic_person_64x64"
+           android:layout_height="44dp">
+       </de.hdodenhof.circleimageview.CircleImageView>
+
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_username_chat_screen"
+            android:maxLines="1"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:text="ToKuda"
+            android:textColor="@color/black"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_display_chat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/l_type"
+        android:layout_below="@id/chat_screen_toolbar"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="4dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/l_type"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/constant10"
+        android:layout_height="?attr/actionBarSize">
+
+        <EditText
+            android:id="@+id/edt_message"
+            android:hint="Type message"
+            android:layout_width="match_parent"
+            android:layout_toLeftOf="@id/iv_send_message"
+            android:background="@drawable/edt_search_background"
+            android:padding="@dimen/constant10"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/constant10"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/iv_send_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:src="@drawable/ic_send_36" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

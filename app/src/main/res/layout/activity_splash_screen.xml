@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SplashScreenActivity">
+
+    <ImageView
+        android:id="@+id/iv_background"
+        android:layout_width="match_parent"
+        android:background="@color/blueSky"
+        android:scaleType="centerCrop"
+        android:layout_height="match_parent"/>
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_splash_man_riding"
+        android:layout_below="@id/tv_trase"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_centerHorizontal="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/man_riding_anim" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/iv_splash_progressbar"
+        android:layout_below="@id/iv_splash_man_riding"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/progressbar_circle_anim" />
+
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome To"
+        android:textColor="@color/white"
+        android:textSize="70sp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/slashfont"/>
+    <TextView
+        android:id="@+id/tv_trase"
+        android:layout_below="@id/tv_welcome"
+        android:layout_above="@id/tv_trase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TraSe"
+        android:textColor="@color/white"
+        android:textSize="70dp"
+        android:gravity="center"
+        android:fontFamily="@font/slashfont"/>
+
+
+
+</RelativeLayout>
