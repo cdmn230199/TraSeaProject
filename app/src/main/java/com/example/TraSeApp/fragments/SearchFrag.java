@@ -78,7 +78,7 @@ public class SearchFrag extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    searchUsers(charSequence.toString().toLowerCase());
+                searchUsers(charSequence.toString().toLowerCase());
             }
 
             @Override

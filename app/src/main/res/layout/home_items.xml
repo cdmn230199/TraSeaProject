@@ -49,11 +49,12 @@
     <ImageView
         android:id="@+id/iv_post"
         android:layout_width="match_parent"
-        android:layout_height="230dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tv_description"
         android:layout_marginTop="4dp"
         android:padding="3dp"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
         android:src="@drawable/img_post_test"></ImageView>
 
     <LinearLayout

@@ -19,10 +19,11 @@
 
             <TextView
                 android:id="@+id/tvUserProfile"
-                android:layout_width="@dimen/constant180"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/icon_lock"
                 android:text="tokuto.236"
+                android:layout_toLeftOf="@id/ivSetting"
                 style="@style/text" />
 
 

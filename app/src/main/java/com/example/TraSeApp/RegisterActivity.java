@@ -81,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
                             hashMap.put("id",userid);
                             hashMap.put("username",username.toLowerCase());
                             hashMap.put("fullname",fullname);
-                            hashMap.put("imgUrl","https://firebasestorage.googleapis.com/v0/b/traseapp-553c3.appspot.com/o/ironman.png?alt=media&token=25f1a566-f92c-4425-8966-59a53aa2a00d");
+                            hashMap.put("imgUrl","https://firebasestorage.googleapis.com/v0/b/traseapp-553c3.appspot.com/o/avatar.jpg?alt=media&token=e3756bf5-d838-498c-8ec3-d944796da1f0");
                             hashMap.put("bio","");
 
                             // Quăng dữ liệu lên firebase
