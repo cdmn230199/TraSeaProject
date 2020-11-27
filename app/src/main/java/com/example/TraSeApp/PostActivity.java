@@ -9,7 +9,9 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -156,6 +158,17 @@ public class PostActivity extends AppCompatActivity {
         iv_added = findViewById(R.id.iv_added);
         tv_post = findViewById(R.id.tv_post);
         edt_description = findViewById(R.id.edt_description);
+        edt_description.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        edt_description.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_DONE){
+                    SoftKeyboard.hideSoftKeyboard(getApplicationContext(), textView);
+                    return true;
+                }
+                return false;
+            }
+        });
 
 
     }

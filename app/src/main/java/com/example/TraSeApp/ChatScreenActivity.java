@@ -133,6 +133,7 @@ public class ChatScreenActivity extends AppCompatActivity {
                 String mes = edt_message.getText().toString();
                 sendMessage(firebaseUser.getUid(), userid, mes);
                 edt_message.setText("");
+                SoftKeyboard.hideSoftKeyboard(getApplicationContext(), view);
             }
         });
 

@@ -1,5 +1,8 @@
 package com.example.TraSeApp.adapter;
 
+import android.view.View;
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -15,7 +18,6 @@ import com.example.TraSeApp.fragments.SearchFrag;
 import static androidx.core.content.ContextCompat.startActivity;
 
 public class ViewPagerHomeAdapter extends FragmentStatePagerAdapter {
-
     int noOfTabs;
 
     public ViewPagerHomeAdapter(@NonNull FragmentManager fm, int noOfTabs) {
@@ -26,6 +28,7 @@ public class ViewPagerHomeAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
+
         switch (position) {
 
             case 0:
@@ -57,4 +60,5 @@ public class ViewPagerHomeAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return noOfTabs;
     }
+
 }

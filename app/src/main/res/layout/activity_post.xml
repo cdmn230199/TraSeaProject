@@ -70,6 +70,8 @@
         android:layout_height="wrap_content"
         android:hint="Write something about your picture"
         android:maxLines="5"
+        android:imeOptions="actionDone"
+        android:inputType="text"
         android:textColor="@color/black" />
 
 </LinearLayout>

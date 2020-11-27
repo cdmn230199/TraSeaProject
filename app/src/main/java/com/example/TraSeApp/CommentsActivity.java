@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -66,6 +68,7 @@ public class CommentsActivity extends AppCompatActivity {
         });
 
         edt_cmt = findViewById(R.id.edt_cmt);
+
         iv_avt_cmt = findViewById(R.id.iv_avt_cmt);
         tv_post_cmt = findViewById(R.id.tv_post_cmt);
         rv_cmt = findViewById(R.id.rv_cmt);
@@ -90,6 +93,7 @@ public class CommentsActivity extends AppCompatActivity {
                 } else {
                     addCmt();
                 }
+                SoftKeyboard.hideSoftKeyboard(getApplicationContext(), view);
             }
         });
 

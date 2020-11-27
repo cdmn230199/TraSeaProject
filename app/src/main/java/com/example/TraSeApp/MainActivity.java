@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.TraSeApp.adapter.ViewPagerHomeAdapter;
 import com.google.android.material.tabs.TabLayout;
@@ -25,13 +26,14 @@ public class MainActivity extends AppCompatActivity {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         init();
         addTabs();
-        saveProfileId(this, "profileid", firebaseUser.getUid());
+//        saveProfileId(this, "profileid", firebaseUser.getUid());
+
     }
 
-    public  static void saveProfileId (Context context, String key, String value){
-        SharedPreferences sp2 = context.getSharedPreferences("caches", Context.MODE_PRIVATE);
-        sp2.edit().putString(key,value).apply();
-    }
+//    public  static void saveProfileId (Context context, String key, String value){
+//        SharedPreferences sp2 = context.getSharedPreferences("caches", Context.MODE_PRIVATE);
+//        sp2.edit().putString(key,value).apply();
+//    }
 
     private void init() {
         viewPager = findViewById(R.id.vp_story);

@@ -113,7 +113,6 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
             case R.id.btnLogIn:
                 handleSignIn();
-
                 break;
 
         }
@@ -219,7 +218,4 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
-
-
 }

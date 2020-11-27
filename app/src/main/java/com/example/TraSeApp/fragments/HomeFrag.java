@@ -1,11 +1,14 @@
 package com.example.TraSeApp.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +22,7 @@ import com.example.TraSeApp.R;
 import com.example.TraSeApp.adapter.PostAdapter;
 import com.example.TraSeApp.model.Post;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +33,7 @@ import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.List;
 
-public class HomeFrag extends Fragment {
+public class HomeFrag extends Fragment{
 
     private RecyclerView rv_posts;
     private List<Post> list;
@@ -37,6 +41,7 @@ public class HomeFrag extends Fragment {
     ImageView iv_goto_mess;
 
     PostAdapter postAdapter;
+    FirebaseUser firebaseUser;
 
 
     public HomeFrag() {
@@ -46,8 +51,15 @@ public class HomeFrag extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        saveProfileId(getContext(), "profileid", firebaseUser.getUid());
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
+
+
     }
 
     @Override
@@ -64,6 +76,11 @@ public class HomeFrag extends Fragment {
             }
         });
 
+    }
+
+    public  static void saveProfileId (Context context, String key, String value){
+        SharedPreferences sp2 = context.getSharedPreferences("caches", Context.MODE_PRIVATE);
+        sp2.edit().putString(key,value).apply();
     }
 
 

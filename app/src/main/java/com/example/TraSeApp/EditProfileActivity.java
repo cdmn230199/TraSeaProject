@@ -13,10 +13,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -82,7 +85,44 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         binding.ivTick.setOnClickListener(this);
         binding.ivAvaEdit.setOnClickListener(this);
 
+        listenerActionDone();
 
+    }
+
+    private void listenerActionDone() {
+        binding.txtName.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        binding.txtName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_DONE){
+                    SoftKeyboard.hideSoftKeyboard(getApplicationContext(), textView);
+                    return true;
+                }
+                return false;
+            }
+        });
+        binding.txtUserName.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        binding.txtUserName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_DONE){
+                    SoftKeyboard.hideSoftKeyboard(getApplicationContext(), textView);
+                    return true;
+                }
+                return false;
+            }
+        });
+        binding.txtBio.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        binding.txtBio.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                if (i == EditorInfo.IME_ACTION_DONE){
+                    SoftKeyboard.hideSoftKeyboard(getApplicationContext(), textView);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
 
@@ -93,8 +133,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 finish();
                 break;
             case R.id.iv_tick:
-
                 updateProfile(binding.txtName.getText().toString(), binding.txtUserName.getText().toString(), binding.txtBio.getText().toString());
+                finish();
                 break;
             case R.id.tv_changeAva:
             case R.id.iv_AvaEdit:

@@ -1,15 +1,11 @@
 package com.example.TraSeApp.fragments;
 
-import android.annotation.SuppressLint;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,17 +14,13 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.TraSeApp.ChangePassActivity;
 import com.example.TraSeApp.EditProfileActivity;
@@ -37,7 +29,6 @@ import com.example.TraSeApp.R;
 import com.example.TraSeApp.adapter.ProfileStorageAdapter;
 import com.example.TraSeApp.model.Post;
 import com.example.TraSeApp.model.User;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -59,11 +50,8 @@ public class ProfileFrag extends Fragment implements View.OnClickListener, Popup
     ImageView iv_aVaProfile;
     ProfileStorageAdapter adapter;
     List<Post> postList;
-
     LinearLayout ln_profile;
-
     ImageView setting;
-
     RecyclerView rvStorageImage;
 
     public ProfileFrag() {
@@ -91,6 +79,14 @@ public class ProfileFrag extends Fragment implements View.OnClickListener, Popup
                 showMenu(view);
             }
         });
+
+
+        init(view);
+        userInfo();
+        getFollowers();
+        getNrPosts();
+        myFoto();
+
 
         return view;
 
@@ -127,19 +123,10 @@ public class ProfileFrag extends Fragment implements View.OnClickListener, Popup
         }
     }
 
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-        init(view);
-
-        userInfo();
-        getFollowers();
-        getNrPosts();
-        myFoto();
         if (profileid.equals(firebaseUser.getUid())){
             btnEditProfile.setText("Edit Profile");
         }else{
@@ -170,11 +157,7 @@ public class ProfileFrag extends Fragment implements View.OnClickListener, Popup
         adapter = new ProfileStorageAdapter(getContext(), postList);
         rvStorageImage.setAdapter(adapter);
 
-
-
-
     }
-
 
     @Override
     public void onClick(View view) {
@@ -198,10 +181,8 @@ public class ProfileFrag extends Fragment implements View.OnClickListener, Popup
         }
     }
 
-
-
     private void userInfo(){
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(profileid);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapShot) {
@@ -242,6 +223,7 @@ public class ProfileFrag extends Fragment implements View.OnClickListener, Popup
             }
         });
     }
+
     private void getFollowers(){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Follow")
                 .child(profileid).child("followers");
@@ -316,6 +298,5 @@ public class ProfileFrag extends Fragment implements View.OnClickListener, Popup
             }
         });
     }
-
 
 }

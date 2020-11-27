@@ -13,9 +13,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.example.TraSeApp.CommentsActivity;
+import com.example.TraSeApp.ContainerProfile;
 import com.example.TraSeApp.R;
 import com.example.TraSeApp.fragments.ProfileFrag;
 import com.example.TraSeApp.model.Post;
@@ -48,6 +50,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final Post post = mPost.get(position);
+
         Glide.with(mContext.getApplicationContext())
                 .load(post.getPostimage())
                 .timeout(5000)
@@ -101,20 +104,26 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 editor.putString("profileid", post.getPublisher());
                 editor.apply();
 
-                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frament_container, new ProfileFrag()).commit();
+                Intent intent = new Intent(mContext, ContainerProfile.class);
+                mContext.startActivity(intent);
+
+//                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frament_container, new ProfileFrag()).commit();
             }
         });
 
-        holder.iv_post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences.Editor editor = mContext.getSharedPreferences("caches", Context.MODE_PRIVATE).edit();
-                editor.putString("profileid", post.getPublisher());
-                editor.apply();
-
-                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frament_container, new ProfileFrag()).commit();
-            }
-        });
+//        holder.iv_post.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                SharedPreferences.Editor editor = mContext.getSharedPreferences("caches", Context.MODE_PRIVATE).edit();
+//                editor.putString("profileid", post.getPublisher());
+//                editor.apply();
+//
+//                Intent intent = new Intent(mContext, ContainerProfile.class);
+//                mContext.startActivity(intent);
+//
+//                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frament_container, new ProfileFrag()).commit();
+//            }
+//        });
 
         holder.tv_username.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,10 +132,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 editor.putString("profileid", post.getPublisher());
                 editor.apply();
 
-                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frament_container, new ProfileFrag()).commit();
+                Intent intent = new Intent(mContext, ContainerProfile.class);
+                mContext.startActivity(intent);
+
+//                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frament_container, new ProfileFrag()).commit();
             }
         });
-
     }
 
     @Override
