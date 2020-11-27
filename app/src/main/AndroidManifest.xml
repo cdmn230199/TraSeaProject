@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ChangePassActivity"></activity>
-        <activity android:name=".activity_show_profile" />
         <activity android:name=".ChatScreenActivity" />
         <activity android:name=".MessageActivity" />
         <activity android:name=".CommentsActivity" />
