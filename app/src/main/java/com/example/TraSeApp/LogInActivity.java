@@ -73,10 +73,14 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
         binding.tvSignUp.setOnClickListener(this);
 
+        binding.tvForgotPass.setOnClickListener(this);
 
         registerSignInFBClient();
 
+
+
     }
+
 
     @Override
     protected void onStart() {
@@ -116,8 +120,13 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
                 break;
 
+            case R.id.tv_forgotPass:
+                Intent intent2 = new Intent(this,ForgotPasswordActivity.class);
+                startActivityForResult(intent2,888);
+
         }
     }
+
 
     private void handleSignIn() {
 
@@ -219,7 +228,6 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
 
 
 }

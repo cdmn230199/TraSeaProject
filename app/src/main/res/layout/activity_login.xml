@@ -38,6 +38,12 @@
         android:id="@+id/btnLogIn"
         style="@style/button"
         android:text="@string/button_name" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal">
     <TextView
         android:id="@+id/tvSignUp"
         android:layout_marginTop="@dimen/constanSize15"
@@ -48,5 +54,17 @@
         android:textStyle="bold"
         android:textSize="@dimen/constanSize15"/>
 
+    <TextView
+        android:id="@+id/tv_forgotPass"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        android:gravity="right"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="@dimen/constanSize15"
+        android:textColor="@color/blue"
+        android:layout_height="wrap_content"
+        android:text="Forgot password" />
+    </LinearLayout>
 
 </LinearLayout>

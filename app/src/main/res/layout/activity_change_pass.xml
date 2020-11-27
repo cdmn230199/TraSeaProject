@@ -32,7 +32,7 @@
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/edt_search_background"
         android:padding="10dp"
-        android:textColor="@color/purple" />.
+        android:textColor="@color/purple" />
 
     <TextView
         android:layout_marginTop="10dp"
