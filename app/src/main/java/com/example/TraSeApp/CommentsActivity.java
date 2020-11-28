@@ -67,6 +67,10 @@ public class CommentsActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent = getIntent();
+        postid = intent.getStringExtra("postid");
+        publisherid = intent.getStringExtra("publisherid");
+
         edt_cmt = findViewById(R.id.edt_cmt);
 
         iv_avt_cmt = findViewById(R.id.iv_avt_cmt);
@@ -76,13 +80,11 @@ public class CommentsActivity extends AppCompatActivity {
         rv_cmt.setHasFixedSize(true);
         rv_cmt.setLayoutManager(new LinearLayoutManager(this));
         comments = new ArrayList<>();
-        commentsAdapter = new CommentsAdapter(this, comments);
+        commentsAdapter = new CommentsAdapter(this, comments,postid);
         rv_cmt.setAdapter(commentsAdapter);
 
 
-        Intent intent = getIntent();
-        postid = intent.getStringExtra("postid");
-        publisherid = intent.getStringExtra("publisherid");
+
 
         // Xử lý khi nhấn nút textview post
         tv_post_cmt.setOnClickListener(new View.OnClickListener() {
@@ -106,11 +108,14 @@ public class CommentsActivity extends AppCompatActivity {
     private void addCmt() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Comments").child(postid);
 
+        String commentid = reference.push().getKey();
+
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("comment", edt_cmt.getText().toString());
         hashMap.put("publisher", firebaseUser.getUid());
+        hashMap.put("commentid", commentid);
 
-        reference.push().setValue(hashMap);
+        reference.child(commentid).setValue(hashMap);
         addNotification();
         edt_cmt.setText("");
     }

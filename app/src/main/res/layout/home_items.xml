@@ -4,6 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/background_post_item">
+    
+    <ImageView
+        android:id="@+id/ic_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_more_32"
+        android:layout_margin="12dp">
+    </ImageView>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/avt"
@@ -11,7 +20,6 @@
         android:layout_height="@dimen/avatarSize"
         android:layout_margin="6dp"
         android:src="@drawable/tokuda"
-        app:civ_border_color="@color/black"
         app:civ_border_width="1dp" />
 
     <LinearLayout
@@ -25,7 +33,7 @@
 
         <TextView
             android:id="@+id/tv_username"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nhat"
             android:textColor="@color/black"

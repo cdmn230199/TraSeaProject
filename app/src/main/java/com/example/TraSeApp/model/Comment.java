@@ -3,13 +3,15 @@ package com.example.TraSeApp.model;
 public class Comment {
     private String comment;
     private String publisher;
+    private String commentid;
 
-    public Comment() {
-    }
-
-    public Comment(String comment, String publisher) {
+    public Comment(String comment, String publisher, String commentid) {
         this.comment = comment;
         this.publisher = publisher;
+        this.commentid = commentid;
+    }
+
+    public Comment() {
     }
 
     public String getComment() {
@@ -28,4 +30,11 @@ public class Comment {
         this.publisher = publisher;
     }
 
+    public String getCommentid() {
+        return commentid;
+    }
+
+    public void setCommentid(String commentid) {
+        this.commentid = commentid;
+    }
 }

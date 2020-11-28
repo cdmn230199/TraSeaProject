@@ -1,11 +1,14 @@
 package com.example.TraSeApp.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +17,8 @@ import com.bumptech.glide.Glide;
 import com.example.TraSeApp.R;
 import com.example.TraSeApp.model.Comment;
 import com.example.TraSeApp.model.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,11 +35,13 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
 
     private Context mContext;
     private List<Comment> commentList;
+    private String postid;
     private FirebaseUser firebaseUser;
 
-    public CommentsAdapter(Context mContext, List<Comment> commentList) {
+    public CommentsAdapter(Context mContext, List<Comment> commentList,String postid) {
         this.mContext = mContext;
         this.commentList = commentList;
+        this.postid = postid;
     }
 
     @NonNull
@@ -51,6 +58,41 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
 
         holder.tv_cmt_content_item.setText(cmt.getComment());
         getUserInfo(holder.iv_avt_cmt_item,holder.tv_username_cmt_item,cmt.getPublisher());
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                if (cmt.getPublisher().equals(firebaseUser.getUid())) {
+
+                    AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
+                    alertDialog.setTitle("Do you want to delete?");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    FirebaseDatabase.getInstance().getReference("Comments")
+                                            .child(postid).child(cmt.getCommentid())
+                                            .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()){
+                                                Toast.makeText(mContext, "Deleted!", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+                }
+                return true;
+            }
+        });
 
     }
 
